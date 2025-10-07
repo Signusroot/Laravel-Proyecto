@@ -1,0 +1,16 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
+
+Route::apiResource('products', ProductController::class);
+Route::apiResource('sales', SaleController::class);
+Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');

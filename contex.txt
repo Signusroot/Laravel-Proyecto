@@ -1,0 +1,42 @@
+Tabla: users
+
+id
+name
+email
+password
+cedula
+created_at
+updated_at
+Tabla: products
+
+id
+name
+price
+description
+stock
+created_at
+updated_at
+
+Tabla: sales
+
+id
+user_id
+total_price
+sale_date
+created_at
+updated_at
+Tabla: sale_products
+
+id
+sale_id
+product_id
+quantity
+created_at
+updated_at
+Relaciones:
+
+users (1) --- (N) sales
+sales (1) --- (N) sale_products
+products (1) --- (N) sale_products
+sale_products (N) --- (1) sales
+sale_products (N) --- (1) products
