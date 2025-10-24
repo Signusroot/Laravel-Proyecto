@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Exists;
 
 class SaleRequest extends FormRequest
 {
@@ -22,10 +23,12 @@ class SaleRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'total_price' => 'required|numeric',
-            'sale_date' => 'required|date',
-            'products' => 'required|array',
+            //'user_id' => 'required|exists:users,id',
+            'cedula' => 'required|string|min:7',
+            //'total_price' => 'required|numeric',
+            //'sale_date' => 'required|date',
+            //Eliminar la regla porque se va a calcular en el controlador [SaleController]
+            'products' => 'required|array|min:1',
             'products.*.product_id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|integer|min:1',
         ];

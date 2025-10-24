@@ -1,3 +1,36 @@
+Contexto del Proyecto
+Este proyecto es una aplicación web desarrollada con Laravel, orientada a la gestión de ventas y productos. El contexto general incluye:
+
+1. Estructura de Datos
+Usuarios (users): Personas que pueden iniciar sesión y realizar ventas. Cada usuario tiene nombre, email, contraseña y cédula.
+Productos (products): Artículos disponibles para la venta, con nombre, precio, descripción y stock.
+Ventas (sales): Registros de transacciones realizadas por los usuarios, con referencia al usuario, precio total y fecha de venta.
+Detalle de ventas (sale_products): Relación entre ventas y productos, indicando qué productos y en qué cantidad se vendieron en cada venta.
+
+2. Relaciones
+Un usuario puede tener muchas ventas.
+Una venta puede tener muchos productos (a través de sale_products).
+Un producto puede estar en muchas ventas (a través de sale_products).
+
+3. Funcionalidades Principales
+Gestión de productos: Crear, listar, actualizar y eliminar productos.
+Gestión de ventas: Registrar ventas, ver historial y detalles.
+Dashboard: Visualización de estadísticas y resumen de ventas/productos.
+Autenticación: Acceso seguro para usuarios mediante Laravel Sanctum.
+
+4. Tecnologías y Herramientas
+Backend: Laravel 12, PHP 8.2, Eloquent ORM.
+Frontend: Blade, TailwindCSS, Vite.
+Base de datos: SQLite (configuración actual).
+Testing: PHPUnit y Pest.
+API REST: Rutas para productos y ventas.
+Control de versiones: Git.
+
+5. Contexto de Ejecución
+El usuario autenticado puede acceder al dashboard y gestionar productos/ventas.
+Las rutas API requieren autenticación para ciertas operaciones.
+El estado de la aplicación depende de la sesión, usuario autenticado y datos en la base de datos
+
 Tabla: users
 
 id
