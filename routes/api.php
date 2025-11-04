@@ -6,12 +6,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
 
-Route::apiResource('products', ProductController::class);
-Route::apiResource('sales', SaleController::class);
+// Rutas públicas
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('dashboard', [DashboardController::class, 'index']);
+// Rutas que requieren autenticación (Sanctum)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/user', fn(Request $request) => $request->user());
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+    // Protege las operaciones de productos y ventas
+    Route::apiResource('products', ProductController::class);
+    Route::apiResource('sales', SaleController::class);
+
+    Route::get('dashboard', [DashboardController::class, 'index']);
+});
