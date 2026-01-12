@@ -59,4 +59,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sale::class);
     }
+
+    //relacion con las configuraciones
+    //Un usuario puede tener muchas configuraciones cargadas.
+    public function configuration()
+    {
+        return $this->hasOne(Configuration::class);
+    }
 }
