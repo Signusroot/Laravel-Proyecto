@@ -17,8 +17,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', fn(Request $request) => $request->user());
 
     // Protege las operaciones de productos y ventas
-    Route::apiResource('products', ProductController::class);
-    Route::apiResource('sales', SaleController::class);
+
+
+    
+});
 
     Route::get('dashboard', [DashboardController::class, 'index']);
-});
+    Route::apiResource('products', ProductController::class);
+    Route::apiResource('sales', SaleController::class);

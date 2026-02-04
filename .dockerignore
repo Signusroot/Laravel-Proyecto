@@ -1,0 +1,16 @@
+vendor
+node_modules
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+.env
+.git
+.gitignore
+docker-compose.yml
+Dockerfile
+nginx
+/.vscode
+/.idea
+tests
+.DS_Store
